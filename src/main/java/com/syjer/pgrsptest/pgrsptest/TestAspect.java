@@ -38,6 +38,10 @@ public class TestAspect {
         } else {
             System.err.println("connection is not transactional");
         }
+        if (connection != null) {
+            DataSourceUtils.releaseConnection(connection, dataSource);
+        }
+
         return joinPoint.proceed();
     }
 }
